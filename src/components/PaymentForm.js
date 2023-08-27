@@ -7,7 +7,8 @@ import { NameInput } from "./inputs/NameInput";
 import { PriceInput } from "./inputs/PriceInput";
 import { RepurchaseInput } from "./inputs/RepurchaseInput";
 import { FormSubmitBtn } from "./inputs/FormSubmitBtn";
-export const PaymentForm = () => {
+import "./PaymentForm.css";
+export const PaymentForm = (props) => {
   const [objectState, setObjectState] = useState({
     name: "", //string
     price: 0, //number
@@ -16,6 +17,8 @@ export const PaymentForm = () => {
     memoString: "", //string
     repurchase: null, // yes / no
     insert: null,
+    isMemoChecked: false,
+    areRadioBtnsChecked: [false, false],
   });
 
   const changeInputHandler = (event) => {
@@ -24,8 +27,7 @@ export const PaymentForm = () => {
     targetObject[event.target.id] = event.target.value;
     setObjectState((prevState) => ({ ...prevState, ...targetObject }));
   };
-  console.log(objectState);
-  console.log("rendered");
+
   return (
     <form className="payment-form">
       <NameInput
@@ -41,9 +43,21 @@ export const PaymentForm = () => {
         objectState={objectState}
       />
       <TypeInput setObjectState={setObjectState} />
-      <MemoInput changeInputHandler={changeInputHandler} />
-      <RepurchaseInput changeInputHandler={changeInputHandler} />
-      <FormSubmitBtn />
+      <MemoInput
+        changeInputHandler={changeInputHandler}
+        objectState={objectState}
+        setObjectState={setObjectState}
+      />
+      <RepurchaseInput
+        changeInputHandler={changeInputHandler}
+        objectState={objectState}
+        setObjectState={setObjectState}
+      />
+      <FormSubmitBtn
+        pushExpenseObject={props.pushExpenseObject}
+        objectState={objectState}
+        setObjectState={setObjectState}
+      />
     </form>
   );
 };

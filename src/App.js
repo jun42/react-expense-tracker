@@ -14,17 +14,21 @@ function App() {
       type: { label: "의류비", value: "apparel" }, // type object
       memoString: "하얀색", //string
       repurchase: "no", // yes / no
-      insert: new Date(),
+      insert: 1,
     },
   ]);
+  const pushExpenseObject = (stateObject) => {
+    setExpenseObjects([...expenseObjects, stateObject]);
+    console.log(expenseObjects);
+  };
   return (
     <div className="wrapper">
       <Header />
       <Filters />
-      {expenseObjects.forEach((stateObject) => {
-        return <ExpenseList stateObject={stateObject} />;
+      {expenseObjects.map((stateObject) => {
+        return <ExpenseList key={Date.now()} stateObject={stateObject} />;
       })}
-      <PaymentForm />
+      <PaymentForm pushExpenseObject={pushExpenseObject} />
     </div>
   );
 }

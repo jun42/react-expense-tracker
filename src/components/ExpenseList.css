@@ -1,0 +1,6 @@
+.expense-list {
+  display: flex;
+}
+.expense-list div {
+  margin: 5px;
+}

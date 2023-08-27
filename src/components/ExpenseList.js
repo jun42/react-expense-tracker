@@ -1,4 +1,5 @@
 import React from "react";
+import "./ExpenseList.css";
 
 // {
 //   name: "신발", //string
@@ -11,5 +12,14 @@ import React from "react";
 // },
 
 export const ExpenseList = (props) => {
-  return <div>ExpenseList</div>;
+  return (
+    <div className="expense-list">
+      <div>{props.stateObject.name}</div>
+      <div>{props.stateObject.price}</div>
+      <div>{props.stateObject.date}</div>
+      <div>{props.stateObject.type.label}</div>
+      <div>{props.stateObject.memoString}</div>
+      <div>{props.stateObject.repurchase}</div>
+    </div>
+  );
 };

@@ -6,14 +6,16 @@ import { DateInput } from "./inputs/DateInput";
 import { NameInput } from "./inputs/NameInput";
 import { PriceInput } from "./inputs/PriceInput";
 import { RepurchaseInput } from "./inputs/RepurchaseInput";
+import { FormSubmitBtn } from "./inputs/FormSubmitBtn";
 export const PaymentForm = () => {
   const [objectState, setObjectState] = useState({
-    name: "",
-    price: 0,
-    date: new Date(),
-    repurchase: null,
-    // isMemo: false,
-    memoString: "",
+    name: "", //string
+    price: 0, //number
+    date: new Date(), // yyyy--mm--dd
+    type: null, // type object
+    memoString: "", //string
+    repurchase: null, // yes / no
+    insert: null,
   });
 
   const changeInputHandler = (event) => {
@@ -24,9 +26,6 @@ export const PaymentForm = () => {
   };
   console.log(objectState);
   console.log("rendered");
-  const testChangeHandler = (event) => {
-    console.log(event.target.value);
-  };
   return (
     <form className="payment-form">
       <NameInput
@@ -41,12 +40,10 @@ export const PaymentForm = () => {
         changeInputHandler={changeInputHandler}
         objectState={objectState}
       />
-      <TypeInput />
+      <TypeInput setObjectState={setObjectState} />
       <MemoInput changeInputHandler={changeInputHandler} />
       <RepurchaseInput changeInputHandler={changeInputHandler} />
-      <button className="payment-form__submit-button" type="submit">
-        추가
-      </button>
+      <FormSubmitBtn />
     </form>
   );
 };

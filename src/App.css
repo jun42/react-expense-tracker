@@ -35,6 +35,6 @@ body {
   border-radius: 4px;
   position: relative;
 }
-.payment-form__input__type li:hover {
+.payment-form__input__type div:hover {
   background-color: #ddd;
 }

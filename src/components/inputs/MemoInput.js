@@ -11,14 +11,12 @@ export const MemoInput = (props) => {
     <div className="payment-form__input__memo">
       <label for="memo">메모</label>
       <input type="checkbox" id="memo" onChange={changeMemoHandler} />
-      {isChecked ? (
+      {isChecked && (
         <input
           type="string"
           id="memoString"
           onChange={props.changeInputHandler}
         />
-      ) : (
-        <></>
       )}
     </div>
   );

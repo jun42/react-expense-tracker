@@ -1,8 +1,11 @@
 import React from "react";
-import { MemoInput } from "./MemoInput";
-import { TypeInput } from "./TypeInput";
 import { useState } from "react";
-
+import { MemoInput } from "./inputs/MemoInput";
+import { TypeInput } from "./inputs/TypeInput";
+import { DateInput } from "./inputs/DateInput";
+import { NameInput } from "./inputs/NameInput";
+import { PriceInput } from "./inputs/PriceInput";
+import { RepurchaseInput } from "./inputs/RepurchaseInput";
 export const PaymentForm = () => {
   const [objectState, setObjectState] = useState({
     name: "",
@@ -20,54 +23,27 @@ export const PaymentForm = () => {
     setObjectState((prevState) => ({ ...prevState, ...targetObject }));
   };
   console.log(objectState);
+  console.log("rendered");
   const testChangeHandler = (event) => {
     console.log(event.target.value);
   };
   return (
     <form className="payment-form">
-      <div className="payment-form__input">
-        <label for="name">이름</label>
-        <input
-          type="text"
-          id="name"
-          onChange={changeInputHandler}
-          value={objectState.name}
-        />
-      </div>
-      <div className="payment-form__input">
-        <label for="price">가격</label>
-        <input
-          type="number"
-          id="price"
-          onChange={changeInputHandler}
-          value={objectState.price}
-        />
-      </div>
+      <NameInput
+        changeInputHandler={changeInputHandler}
+        objectState={objectState}
+      />
+      <PriceInput
+        changeInputHandler={changeInputHandler}
+        objectState={objectState}
+      />
+      <DateInput
+        changeInputHandler={changeInputHandler}
+        objectState={objectState}
+      />
       <TypeInput />
-      <div className="payment-form__input">
-        <label for="date">날짜</label>
-        <input type="date" id="date" />
-      </div>
       <MemoInput changeInputHandler={changeInputHandler} />
-      <div className="payment-form__input">
-        재구매의사
-        <input
-          type="radio"
-          name="repurchase"
-          id="repurchase"
-          value="yes"
-          onChange={changeInputHandler}
-        />
-        yes
-        <input
-          type="radio"
-          name="repurchase"
-          id="repurchase"
-          value="no"
-          onChange={changeInputHandler}
-        />
-        no
-      </div>
+      <RepurchaseInput changeInputHandler={changeInputHandler} />
       <button className="payment-form__submit-button" type="submit">
         추가
       </button>

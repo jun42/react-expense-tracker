@@ -9,6 +9,8 @@ export const PaymentForm = () => {
     price: 0,
     date: new Date(),
     repurchase: null,
+    // isMemo: false,
+    memoString: "",
   });
 
   const changeInputHandler = (event) => {
@@ -46,7 +48,7 @@ export const PaymentForm = () => {
         <label for="date">날짜</label>
         <input type="date" id="date" />
       </div>
-      <MemoInput />
+      <MemoInput changeInputHandler={changeInputHandler} />
       <div className="payment-form__input">
         재구매의사
         <input

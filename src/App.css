@@ -33,7 +33,8 @@ body {
 .payment-form__input__type {
   cursor: pointer;
   border-radius: 4px;
+  position: relative;
 }
-.payment-form__input__type:hover {
-  background-color: #f9f9f9fa;
+.payment-form__input__type li:hover {
+  background-color: #ddd;
 }
